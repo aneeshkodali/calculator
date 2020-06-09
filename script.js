@@ -5,6 +5,7 @@ class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
+        this.clear();
     }
 
     //function to clear variables
@@ -21,7 +22,10 @@ class Calculator {
 
     //function to add digit selected to number 
     appendNumber(number) {
-        this.currentOperand = number;
+
+        // check if period button pressed and number already has period
+        if (number==="." && this.currentOperand.includes('.')) return ;
+        this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
     //function to choose operation selected
@@ -53,7 +57,7 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 // create calculator object
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-
+// add event listener to number buttons: append number to current operand and update the display of the number
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);

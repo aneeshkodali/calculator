@@ -1,0 +1,74 @@
+*, *::before, *::after {
+    /*make easier to size elements*/
+    box-sizing: border-box;
+    font-family: 'Valera Rounded', sans-serif;
+    font-weight: normal;
+}
+
+/*style background*/
+body {
+    /*background fills whole screen*/
+    padding: 0; 
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C); /* apply background */
+}
+
+/*style calculator grid*/
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center; /* align entire grid content to center, not the grid elements themselves (align-items)*/
+    min-height: 100vh; /*fill 100% of height all the time*/
+
+    grid-template-columns: repeat(4, 100px); /*column setup - 4 columns, each 100px wide*/
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /*row setup - at least 120px tall, at max - as large as is needed*/
+    /*5 rows, each 100px tall*/
+}
+
+/*position buttons*/
+.calculator-grid > button {
+    cursor: pointer; /*upon hover, change cursor pointer*/
+    font-size: 2rem; /*larger than normal font*/
+    border: 1px solid white;
+    outline: none; /*probably not needed (done by browser by default)*/
+    background-color: rgba(255, 255, 255, .75);
+}
+
+/*change button when hover*/
+.calculator-grid > button:hover {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+/*make some buttons take up twice the space of a normal button (AC and =)*/
+.span-two {
+    grid-column: span 2;
+}
+
+/*style the output element (screen)*/
+.output {
+    grid-column: 1 / -1; /*spand the entire width of the container*/
+    background-color: rgba(0, 0, 0, .75);
+    
+    
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+
+    /*wrap number (breaks to new line)*/
+    word-wrap: break-word; 
+    word-break: break-all; 
+}
+
+/*style previous operation (top half) portion of output*/
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+/*style current operation (bottom half) portion of output*/
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}

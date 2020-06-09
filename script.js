@@ -9,7 +9,9 @@ class Calculator {
 
     //function to clear variables
     clear() {
-       
+       this.previousOperand = '';
+       this.currentOperand = '';
+       this.operation = undefined;
     }
 
     //function to remove single number
@@ -19,7 +21,7 @@ class Calculator {
 
     //function to add digit selected to number 
     appendNumber(number) {
-
+        this.currentOperand = number;
     }
 
     //function to choose operation selected
@@ -34,7 +36,7 @@ class Calculator {
 
     //function to update display
     updateDisplay() {
-
+        this.currentOperandTextElement.innerText = this.currentOperand;
     }
 }
 
@@ -47,3 +49,14 @@ const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
 
+
+// create calculator object
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
+
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
+})

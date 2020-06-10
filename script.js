@@ -89,7 +89,13 @@ class Calculator {
     //function to update display
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand;
-        this.previousOperandTextElement.innerText = this.previousOperand;
+
+        // update previous operand to show all the operations we've done
+        if (this.operation != null) {
+            this.previousOperandTextElement.innerText = this.previousOperand + " " + this.operation;
+        }
+
+        
     }
 }
 

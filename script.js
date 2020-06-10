@@ -126,3 +126,9 @@ equalsButton.addEventListener('click', button => {
     calculator.compute();
     calculator.updateDisplay();
 })
+
+// add event listener to ALL CLEAR button
+allClearButton.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay();
+})

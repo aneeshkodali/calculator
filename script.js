@@ -17,7 +17,8 @@ class Calculator {
 
     //function to remove single number
     delete() {
-
+        // remove last element in string (digit)
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     //function to add digit selected to number 

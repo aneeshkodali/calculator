@@ -30,7 +30,12 @@ class Calculator {
 
     //function to choose operation selected
     chooseOperation(operation) {
+        this.operation = operation;
 
+        // when operation clicked, add the current number from the 'current operand' to the 'previous operand'
+        this.previousOperand = this.currentOperand;
+        // clear current operand
+        this.currentOperand = '';
     }
 
     //function to do the math

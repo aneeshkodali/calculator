@@ -89,8 +89,25 @@ class Calculator {
     //
     getDisplayNumber(number) {
 
-        // convert number (string) to number
-        const floatNumber = parseFloat(number);
+        const stringNumber = number.toString();
+        
+        // get all digits before and after decimal
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+
+        let integerDisplay;
+
+        // if no 'before-decimal' part of number (integers)
+        if (isNaN(integerDigits)) {
+            integerDisplay = '';
+        } else {
+            integerDisplay = integerDigits.toLocaleString('en', {maximumFractionDigits: 0})
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`;
+        }  else {
+            return integerDisplay;
+        }
 
         if (isNaN(floatNumber)) return '';
         return floatNumber.toLocaleString('en');

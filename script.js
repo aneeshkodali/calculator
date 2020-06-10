@@ -57,10 +57,18 @@ const currentOperandTextElement = document.querySelector('[data-current-operand]
 // create calculator object
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
-// add event listener to number buttons: append number to current operand and update the display of the number
+// add event listener to NUMBER buttons: append number to current operand and update the display of the number
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+// add event listener to OPERATIONS buttons
+operationsButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();
     })
 })

@@ -30,6 +30,15 @@ class Calculator {
 
     //function to choose operation selected
     chooseOperation(operation) {
+
+        // if no number in current display, can't allow any operation
+        if (this.currentOperand==='') return;
+        
+        // if number in previous display, then do the computation
+        if (this.previousOperandTextElement!=='') {
+            this.compute();
+        }
+
         this.operation = operation;
 
         // when operation clicked, add the current number from the 'current operand' to the 'previous operand'

@@ -50,6 +50,39 @@ class Calculator {
     //function to do the math
     compute() {
 
+        let computation;
+
+        // get number version of current/previous operand
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+
+        // if no number for prev or current (no 2 numbers to add), don't allow computation
+        if (isNaN(prev) || isNaN(current)) return;
+
+        // handle different computations (operations)
+        switch (this.operation) {
+            case '+':
+                computation = prev + current;
+                break;
+            case '-':
+                computation = prev - current;
+                break;
+            case '*':
+                computation = prev * current;
+                break;
+            case '/':
+                computation = prev + current;
+                break;
+            default:
+                return
+        }
+
+        // update current operand
+        this.currentOperand = computation;
+        // update operation
+        this.operation = undefined;
+        // update previous operand
+        this.previousOperand = '';
     }
 
     //function to update display

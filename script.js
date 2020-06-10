@@ -86,13 +86,23 @@ class Calculator {
         this.previousOperand = '';
     }
 
+    //
+    getDisplayNumber(number) {
+
+        // convert number (string) to number
+        const floatNumber = parseFloat(number);
+
+        if (isNaN(floatNumber)) return '';
+        return floatNumber.toLocaleString('en');
+    }
+
     //function to update display
     updateDisplay() {
-        this.currentOperandTextElement.innerText = this.currentOperand;
+        this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
 
         // update previous operand to show all the operations we've done
         if (this.operation != null) {
-            this.previousOperandTextElement.innerText = this.previousOperand + " " + this.operation;
+            this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
         }
 
         

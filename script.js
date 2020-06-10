@@ -46,12 +46,13 @@ class Calculator {
     //function to update display
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand;
+        this.previousOperandTextElement.innerText = this.previousOperand;
     }
 }
 
 //store buttons in variables (select by data attribute)
 const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operations]');
+const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
@@ -71,7 +72,7 @@ numberButtons.forEach(button => {
 })
 
 // add event listener to OPERATIONS buttons
-operationsButtons.forEach(button => {
+operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();

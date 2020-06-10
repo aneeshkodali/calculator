@@ -120,6 +120,8 @@ class Calculator {
         // update previous operand to show all the operations we've done
         if (this.operation != null) {
             this.previousOperandTextElement.innerText = `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
+        } else {
+            this.previousOperandTextElement.innerText = '';
         }
 
         

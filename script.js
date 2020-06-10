@@ -133,3 +133,9 @@ allClearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay();
 })
+
+// add event listener to DELETE button
+deleteButton.addEventListener('click', button => {
+    calculator.delete();
+    calculator.updateDisplay();
+})
